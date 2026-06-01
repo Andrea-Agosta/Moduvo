@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding, computed, input } from '@angular/core';
+import { Component, Input, HostBinding, input } from '@angular/core';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -47,7 +47,7 @@ export class Button {
   variant = input<ButtonVariants['variant']>('default');
   size = input<ButtonVariants['size']>('default');
   
-  @Input() class: string = '';
+  @Input() class: String = '';
 
   @HostBinding('class')
   get hostClasses() {
