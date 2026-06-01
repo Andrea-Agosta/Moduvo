@@ -1,0 +1,35 @@
+<section class="py-16">
+	<div class="container mx-auto px-4">
+		<div class="flex justify-between items-center mb-12">
+			<h2 class="text-3xl font-bold">Featured Products</h2>
+			<a uiButton [size]="'lg'" [routerLink]="['/products']">
+				View All
+			</a>
+		</div>
+		<div class="grid md:grid-cols-4 gap-6">
+			@if (isProductLoading()) {
+			<h1>Loading...</h1>
+			} @else {
+			@for (product of products(); track product.id) {
+			<app-card [data]="product" [childName]="childName">
+				<div class="flex items-center space-x-2">
+					<div class="flex items-center">
+						<svg
+							lucideStar
+							class="w-4 h-4 fill-yellow-400 text-yellow-400"
+            ></svg>
+						<span class="text-sm text-muted-foreground ml-1">{{product.rating}} ({{product.reviews}})</span>
+					</div>
+				</div>
+				<div class="flex items-center space-x-2">
+					<span class="text-xl font-bold">{{product.price}}</span>
+					@if (product.originalPrice){
+					<span class="text-muted-foreground line-through">{{product.originalPrice}}</span>
+					}
+				</div>
+			</app-card>
+			}
+			}
+		</div>
+	</div>
+</section>
