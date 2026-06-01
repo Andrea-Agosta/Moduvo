@@ -1,6 +1,7 @@
 import { Component, input, computed } from '@angular/core';
 
 import { Product } from '../../services/product.model';
+import { Category } from '../../services/category.model';
 
 @Component({
   selector: 'app-card',
@@ -9,7 +10,7 @@ import { Product } from '../../services/product.model';
   styleUrl: './card.scss',
 })
 export class Card {
-  data= input<Product>()
+  data= input<Product | Category>()
   childName = input<String>();
 
   style = {

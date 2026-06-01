@@ -2,10 +2,11 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 
 import { CategoryService } from '../../../../services/category.service';
 import { Category } from '../../../../services/category.model';
+import { Card } from '../../../../components/card/card';
 
 @Component({
   selector: 'app-categories',
-  imports: [],
+  imports: [Card],
   templateUrl: './categories.html',
   styleUrl: './categories.scss',
 })
@@ -15,6 +16,7 @@ export class Categories implements OnInit {
   categories = signal<Category[]>([]);
   isCategoryLoading = signal<boolean>(true);
   error = signal<any>(null);
+  childName = "category"
   
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe({
