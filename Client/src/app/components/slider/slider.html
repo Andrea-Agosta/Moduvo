@@ -1,0 +1,23 @@
+<div [class]="containerClasses">
+	<div class="relative h-2 w-full grow overflow-hidden rounded-full bg-primary">
+		<div class="absolute h-full bg-secondary" [style.width.%]="percentage"></div>
+	</div>
+
+	<input
+		type="range"
+		[min]="min"
+		[max]="max"
+		[step]="step"
+		[disabled]="disabled"
+		[value]="value"
+		(input)="onInputChange($event)"
+		(blur)="onTouched()"
+		class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
+	/>
+
+	<div 
+		class="absolute block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background pointer-events-none"
+		[class.opacity-50]="disabled"
+		[style.left]="'calc(' + percentage + '% - 10px)'"
+	></div>
+</div>
