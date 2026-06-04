@@ -4,7 +4,9 @@ export interface Product {
   price: number,
   originalPrice: number,
   image: string,
+  category: string
   rating: number,
   reviews: number
+  isNew: boolean
+  isSale: boolean
 }
-
