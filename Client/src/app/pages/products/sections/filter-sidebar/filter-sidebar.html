@@ -1,0 +1,57 @@
+<div class="lg:w-1/4">
+	<div class="bg-white rounded-lg p-6 shadow-sm border">
+		<div class="flex items-center space-x-2 mb-6">
+			<svg lucideFunnel class="w-5 h-5"></svg>
+			<h2 class="text-lg font-semibold">Filters</h2>
+		</div>
+
+		<!-- Categories -->
+		@if(!error()){
+		<div class="mb-6">
+			<h3 class="font-medium mb-3">Categories</h3>
+			<div class="space-y-2">
+				@for(category of categories(); track category.name){
+				<div class="flex items-center space-x-2">
+					<app-checkbox [ngModel]="selectedCategories().includes(category.name)"
+						(ngModelChange)="toggleCategory($event, category.name)"></app-checkbox>
+					<label class="text-sm cursor-pointer">{{ category.name }}</label>
+				</div>
+				}
+			</div>
+		</div>
+		}
+
+		<!-- Price Range -->
+		<div class="mb-6">
+			<h3 class="font-medium mb-3">Price Range</h3>
+			<app-slider [min]="0" [max]="2000" [step]="50" [ngModel]="currentPrice()" (ngModelChange)="onPriceChange($event)"
+				class="mb-3">
+			</app-slider>
+			<div class="flex justify-between text-sm text-muted-foreground">
+				<span>{{"$" + priceRange()[0]}}</span>
+				<span>{{"$" + priceRange()[1]}}</span>
+			</div>
+		</div>
+
+		<!-- {/* Rating */} -->
+		<div class="mb-6">
+			<h3 class="font-medium mb-3">Rating</h3>
+			<div class="space-y-2">
+				@for (rating of [1, 2, 3, 4, 5]; track rating){
+				<div class="flex items-center space-x-2">
+					<app-checkbox />
+					<div class="flex items-center">
+						@for(star of [1, 2, 3, 4, 5]; track $index){
+						<svg lucideStar
+							[class]="$index < rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300' + 'w-4 h-4'" />
+						}
+						<span class="text-sm ml-2">& Up</span>
+					</div>
+				</div>
+				}
+			</div>
+		</div>
+
+		<button uiButton class="w-full">Apply Filters</button>
+	</div>
+</div>

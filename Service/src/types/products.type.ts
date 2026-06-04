@@ -4,6 +4,9 @@ export interface IProducts {
     price: number,
     originalPrice: number,
     image: string,
+    category: string
     rating: number,
     reviews: number
+    isNew: boolean
+    isSale: boolean
 }
