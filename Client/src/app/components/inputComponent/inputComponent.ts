@@ -1,5 +1,5 @@
 import { Component, Input, HostBinding } from '@angular/core';
-import { cn } from '../button/button';
+import { cn } from '../cn';
 
 @Component({
   selector: 'input[appInput]',
