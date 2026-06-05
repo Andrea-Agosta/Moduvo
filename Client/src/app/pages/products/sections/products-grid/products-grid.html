@@ -1,0 +1,75 @@
+<!-- Sort and Results Info -->
+<!-- TODO: future implementation: render page using the filters options -->
+<div class="flex justify-between items-center mb-6">
+	<p class="text-muted-foreground">Showing {{products().length}} products</p>
+	<div class="w-48">
+		<mat-select [(value)]="selected"
+			class="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1">
+			@for (option of sortOptions; track option.value) {
+			<mat-option [value]="option.value"
+				class="relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+				{{ option.label }}
+			</mat-option>
+			}
+		</mat-select>
+	</div>
+</div>
+
+<!-- Products Grid -->
+<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+	@for (product of products(); track product.id){
+	<div key={product.id}
+		class="group bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-lg transition-all">
+		<div class="relative overflow-hidden">
+			<img [src]="product.image" [alt]="product.name"
+				class="w-full h-64 object-cover transition-transform group-hover:scale-105" />
+			<div class="absolute top-3 left-3 flex flex-col space-y-2">
+				@if (product.isNew) {
+				<span class="bg-green-500 text-white px-2 py-1 rounded text-xs font-medium">
+					New
+				</span>
+				}
+				@if(product.isSale) {
+				<span class="bg-destructive text-destructive-foreground px-2 py-1 rounded text-xs font-medium">
+					Sale
+				</span>
+				}
+			</div>
+			<button
+				class="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity">
+				<svg lucideHeart class="w-4 h-4" />
+			</button>
+		</div>
+
+		<div class="p-4">
+			<p class="text-sm text-muted-foreground mb-1">{{product.category}}</p>
+			<h3 class="font-semibold mb-2 group-hover:text-primary transition-colors">
+				<a [routerLink]="[`/product/${product.id}`]">{{product.name}}</a>
+			</h3>
+
+			<div class="flex items-center space-x-2 mb-3">
+				<div class="flex items-center">
+					<svg lucideStar class="w-4 h-4 fill-yellow-400 text-yellow-400" />
+					<span class="text-sm text-muted-foreground ml-1">
+						{{product.rating}} ({{product.reviews}})
+					</span>
+				</div>
+			</div>
+
+			<div class="flex items-center justify-between">
+				<div class="flex items-center space-x-2">
+					<span class="text-lg font-bold">{{product.price}}</span>
+					@if(product.originalPrice) {
+					<span class="text-muted-foreground line-through text-sm">
+						{{product.originalPrice}}
+					</span>
+					}
+				</div>
+				<button uiButton size="sm" class="shrink-0">
+					<svg lucideShoppingCart class="w-4 h-4 mr-2 text-white" />
+					Add to Cart
+				</button>
+			</div>
+		</div>
+	</div>
+	}
