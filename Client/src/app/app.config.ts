@@ -1,5 +1,5 @@
 import {
-  APP_INITIALIZER,
+  provideAppInitializer,
   ApplicationConfig,
   inject,
   provideBrowserGlobalErrorListeners,
@@ -8,14 +8,14 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { provideLucideIcons } from '@lucide/angular';
 import { LucideTruck, LucideShield, LucideHeadphones } from '@lucide/angular';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
 
 import { routes } from './app.routes';
 import { AppConfigService } from '../core/services/app-config';
-
-function initializeAppConfig() {
-  const appConfigService = inject(AppConfigService);
-  return () => appConfigService.loadConfig();
-}
+import { cartReducer } from './store/cart/cart.reducer';
+import { authReducer } from './store/auth/auth.reducer';
+import { AuthEffects } from './store/auth/auth.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,10 +23,14 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideLucideIcons(LucideTruck, LucideShield, LucideHeadphones),
     provideRouter(routes),
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeAppConfig,
-      multi: true,
-    },
+    provideAppInitializer(() => {
+      const appConfigService = inject(AppConfigService);
+      return appConfigService.loadConfig();
+    }),
+    provideStore({
+      cart: cartReducer,
+      auth: authReducer,
+    }),
+    provideEffects(AuthEffects),
   ],
 };

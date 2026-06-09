@@ -1,15 +1,16 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { FormsModule } from '@angular/forms'
 import { RouterLink } from '@angular/router';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { LucideHeart, LucideShoppingCart, LucideStar } from "@lucide/angular";
-
 
 import { ProductService } from '../../../../services/product.service';
 import { Product } from '../../../../services/product.model';
 import { Button } from "../../../../components/button/button";
+import { addProduct } from '../../../../store/cart/cart.actions';
 
 interface SelectOption {
   value: string;
@@ -25,6 +26,7 @@ interface SelectOption {
 })
 export class ProductsGrid implements OnInit {
   private productService = inject(ProductService);
+  private store = inject(Store<{ cart: Product[] }>);
   products = signal<Product[]>([]);
   isProductLoading = signal<boolean>(true);
   error = signal<any>(null);
@@ -50,5 +52,16 @@ export class ProductsGrid implements OnInit {
         this.isProductLoading.set(false);
       }
     });
+  }
+
+  addToCart(product: Product) {
+    const itemToAdd = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      cartItems: 1
+    }
+    this.store.dispatch(addProduct(itemToAdd));
   }
 }
