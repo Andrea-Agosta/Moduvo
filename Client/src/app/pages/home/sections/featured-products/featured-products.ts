@@ -21,7 +21,7 @@ export class FeaturedProducts implements OnInit {
   childName = "products"
 
   ngOnInit(): void {
-    this.productService.getProductss().subscribe({
+    this.productService.getProducts().subscribe({
       next: (data) => {
         this.products.set(data);
       },

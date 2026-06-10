@@ -18,10 +18,9 @@
 <!-- Products Grid -->
 <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
 	@for (product of products(); track product.id){
-	<div key={product.id}
-		class="group bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-lg transition-all">
+	<div class="group bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-lg transition-all">
 		<div class="relative overflow-hidden">
-			<img [src]="product.image" [alt]="product.name"
+			<img [src]="product.images[0]" [alt]="product.name"
 				class="w-full h-64 object-cover transition-transform group-hover:scale-105" />
 			<div class="absolute top-3 left-3 flex flex-col space-y-2">
 				@if (product.isNew) {
@@ -73,3 +72,4 @@
 		</div>
 	</div>
 	}
+</div>

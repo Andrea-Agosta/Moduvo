@@ -40,7 +40,7 @@ export class ProductsGrid implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.productService.getProductss().subscribe({
+    this.productService.getProducts().subscribe({
       next: (data) => {
         this.products.set(data);
       },
@@ -59,7 +59,7 @@ export class ProductsGrid implements OnInit {
       id: product.id,
       name: product.name,
       price: product.price,
-      image: product.image,
+      image: product.images,
       cartItems: 1
     }
     this.store.dispatch(addProduct(itemToAdd));

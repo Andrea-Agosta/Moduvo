@@ -1,7 +1,11 @@
-import { Request } from 'express';
 import { IProducts } from '../types/products.type';
-import { getHomeProducts } from '../db'
+import { getProducts as getProductFromDb } from '../db'
 
 export const getProducts = async (): Promise<IProducts[]> => {
-    return getHomeProducts()
+    return getProductFromDb()
+};
+
+export const getProductById = async (req): Promise<IProducts> => {
+    const products = await getProducts()
+    return products.find(product => product.id == req.params.id)
 };

@@ -6,7 +6,7 @@ export interface CartState {
 	id: number,
 	name: string,
 	price: number,
-	image: string,
+	image: string[],
 	cartItems: number
 }
 
