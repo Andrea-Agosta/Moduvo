@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, forwardRef, HostBinding } from '@angular/core';
+import { Component, forwardRef, HostBinding, input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { LucideCheck } from '@lucide/angular';
 
@@ -21,7 +21,7 @@ import { cn } from '../cn';
       type="button"
       role="checkbox"
       [attr.aria-checked]="checked"
-      [disabled]="disabled"
+      [disabled]="isDisabled"
       [class]="checkboxClasses"
       (click)="toggle()"
     >
@@ -34,11 +34,15 @@ import { cn } from '../cn';
   `,
 })
 export class Checkbox implements ControlValueAccessor {
-  @Input() className: string = '';
-  @Input() disabled: boolean = false;
-
+  className = input<string>('');
+  disabledInput = input<boolean>(false, { alias: 'disabled' });
   readonly checkIcon = LucideCheck;
   checked: boolean = false;
+  private _disabled = false;
+
+  get isDisabled(): boolean {
+    return this.disabledInput() || this._disabled;
+  }
 
   get checkboxClasses() {
     return cn(
@@ -64,12 +68,11 @@ export class Checkbox implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    this._disabled = isDisabled;
   }
 
   toggle() {
-    console.log('checked ->', this.checked)
-    if (!this.disabled) {
+    if (!this.isDisabled) {
       this.checked = !this.checked;
       this.onChange(this.checked);
       this.onTouched();
