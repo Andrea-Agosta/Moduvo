@@ -7,7 +7,7 @@
           carefully curated collection.</p>
       </div>
       @for(footerSection of footerSections; track footerSection.sectionsName){
-        <div key={index}>
+        <div>
           <h4 class="font-semibold mb-4">{{footerSection.sectionsName}}</h4>
           <ul class="space-y-2 text-muted-foreground">
             @for( sectionsOptions of footerSection.sectionsOptions; track sectionsOptions){

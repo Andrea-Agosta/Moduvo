@@ -5,7 +5,7 @@ import {
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { provideLucideIcons } from '@lucide/angular';
 import { LucideTruck, LucideShield, LucideHeadphones } from '@lucide/angular';
 import { provideStore } from '@ngrx/store';
@@ -22,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
     provideLucideIcons(LucideTruck, LucideShield, LucideHeadphones),
-    provideRouter(routes),
+    provideRouter(routes, withComponentInputBinding()),
     provideAppInitializer(() => {
       const appConfigService = inject(AppConfigService);
       return appConfigService.loadConfig();

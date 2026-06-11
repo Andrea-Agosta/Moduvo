@@ -12,11 +12,19 @@ export class ProductService {
   private http = inject(HttpClient);
   private appConfigService = inject(AppConfigService);
 
-  getProductss(): Observable<Product[]> {
+  getProducts(): Observable<Product[]> {
     return this.appConfigService.ensureConfig().pipe(
       switchMap((config) =>
         this.http.get<Product[]>(`${config.serviceUrl}/products`),
       ),
     );
+  }
+
+  getProductById(id: string): Observable<Product> {
+    return this.appConfigService.ensureConfig().pipe(
+      switchMap((config) => 
+        this.http.get<Product>(`${config.serviceUrl}/products/${id}`),
+      )
+    )
   }
 }

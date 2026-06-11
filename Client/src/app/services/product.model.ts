@@ -3,10 +3,12 @@ export interface Product {
   name: string,
   price: number,
   originalPrice: number,
-  image: string,
+  description?: string
+  images: string[],
+  features: string[],
   category: string
   rating: number,
-  reviews: number,
-  isNew: boolean,
-  isSale: boolean,
+  reviews: number
+  isNew: boolean
+  isSale: boolean
 }

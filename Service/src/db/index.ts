@@ -1,10 +1,11 @@
-export const getHomeProducts = () => [
+export const getProducts = () => [
   {
     id: 1,
     name: "Modern Velvet Sofa",
     price: 1299,
     originalPrice: 1599,
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop",
+    images: ["https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop"],
+    features: [],
     category: "Living Room",
     rating: 4.8,
     reviews: 127,
@@ -16,7 +17,9 @@ export const getHomeProducts = () => [
     name: "Scandinavian Dining Table",
     price: 899,
     originalPrice: null,
-    image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&h=300&fit=crop",
+    description: "A sleek and comfortable sofa for your modern living space.",
+    images: ["https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&h=300&fit=crop"],
+    features: [],
     category: "Dining Room",
     rating: 4.9,
     reviews: 89,
@@ -28,7 +31,9 @@ export const getHomeProducts = () => [
     name: "Luxury Leather Armchair",
     price: 799,
     originalPrice: 999,
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop",
+    description: "A sleek and comfortable Leather Armchair for your modern living space.",
+    images: ["https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop"],
+    features: [],
     category: "Living Room",
     rating: 4.7,
     reviews: 203,
@@ -40,7 +45,9 @@ export const getHomeProducts = () => [
     name: "Minimalist Bed Frame",
     price: 649,
     originalPrice: null,
-    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&h=300&fit=crop",
+    description: "A minimalist bed frame for your modern bedroom space.",
+    images: ["https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&h=300&fit=crop"],
+    features: [],
     category: "Bedroom",
     rating: 4.6,
     reviews: 156,
@@ -52,7 +59,9 @@ export const getHomeProducts = () => [
     name: "Industrial Coffee Table",
     price: 399,
     originalPrice: null,
-    image: "https://images.unsplash.com/photo-1549497538-303791108f95?w=400&h=300&fit=crop",
+    description: "An industrial coffe table for your modern Living space.",
+    images: ["https://images.unsplash.com/photo-1549497538-303791108f95?w=400&h=300&fit=crop"],
+    features: [],
     category: "Living Room",
     rating: 4.5,
     reviews: 78,
@@ -64,14 +73,81 @@ export const getHomeProducts = () => [
     name: "Ergonomic Office Chair",
     price: 559,
     originalPrice: 699,
-    image: "https://images.unsplash.com/photo-1541558869434-2840d308329a?w=400&h=300&fit=crop",
+    description: "An ergonomic office chair for your modern office space.",
+    images: ["https://images.unsplash.com/photo-1541558869434-2840d308329a?w=400&h=300&fit=crop"],
+    features: [],
     category: "Office",
     rating: 4.8,
     reviews: 234,
     isNew: false,
     isSale: true
-  }
-  ];
+  },
+  {
+    id: 7,
+    name: "Modern Sofa",
+    category: "Living Room",
+    price: 799.99,
+    originalPrice: null,
+    description: "A sleek and comfortable sofa for your modern living space.",
+    images: [
+      "https://images.unsplash.com/photo-1634497885778-152eb6fd543d?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1670103626902-2e70a441c7a6?w=400&h=300&fit=crop",
+    ],
+    features: [
+      "High-density foam cushions",
+      "Durable wooden frame",
+      "Easy to clean fabric",
+    ],
+    rating: 4.5,
+    reviews: 120,
+    isNew: false,
+    isSale: false
+  },
+  {
+    id: 8,
+    name: "Elegant Dining Table",
+    category: "Dining Room",
+    price: 549.99,
+    originalPrice: null,
+    description: "A sophisticated dining table to elevate your dining experience.",
+    images: [
+      "https://plus.unsplash.com/premium_photo-1670950411934-e21abf39191e?w=400&h=300&fit=crop",
+      "https://plus.unsplash.com/premium_photo-1670950411953-b3ed695a58fc?w=400&h=300&fit=crop",
+      "https://plus.unsplash.com/premium_photo-1670950413335-80e8a2d6bb19?w=400&h=300&fit=crop",
+    ],
+    features: [
+      "Solid wood construction",
+      "Seats up to 6 people",
+      "Scratch-resistant surface",
+    ],
+    rating: 4.2,
+    reviews: 95,
+    isNew: false,
+    isSale: false
+  },
+  {
+    id: 9,
+    name: "Cozy Bed Frame",
+    category: "Bedroom",
+    price: 899.99,
+    originalPrice: null,
+    description: "A comfortable and stylish bed frame for a restful night's sleep.",
+    images: [
+      "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      "https://images.unsplash.com/photo-1519724324021-9a9916e6e54a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      "https://images.unsplash.com/photo-1513506003740-b6e12259edcd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    ],
+    features: [
+      "Upholstered headboard",
+      "Sturdy slat support system",
+      "Available in multiple sizes",
+    ],
+    rating: 4.8,
+    reviews: 150,
+    isNew: false,
+    isSale: false
+  },
+];
 
 export const getHomeCategories = () => [
   {

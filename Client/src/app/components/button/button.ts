@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding, input } from '@angular/core';
+import { Component, computed, HostBinding, input } from '@angular/core';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../cn';
 
@@ -37,15 +37,16 @@ type ButtonVariants = VariantProps<typeof buttonVariants>;
   selector: 'button[uiButton], a[uiButton]',
   standalone: true,
   template: `<ng-content />`,
+  host: {
+    '[class]': 'hostClasses()'
+  }
 })
 export class Button {
   variant = input<ButtonVariants['variant']>('default');
   size = input<ButtonVariants['size']>('default');
-  
-  @Input() class: String = '';
+  class = input<string>('');
 
-  @HostBinding('class')
-  get hostClasses() {
-    return cn(buttonVariants({ variant: this.variant(), size: this.size() }), this.class);
-  }
+  protected hostClasses = computed(() => 
+    cn(buttonVariants({ variant: this.variant(), size: this.size() }), this.class())
+  );
 }
