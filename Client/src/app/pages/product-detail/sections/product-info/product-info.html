@@ -1,0 +1,55 @@
+<div class="space-y-6">
+  <div>
+    <ui-badge variant="secondary" class="mb-2">{{product()?.category}}</ui-badge>
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">{{product()?.name}}</h1>
+    <div class="flex items-center space-x-4 mb-4">
+      <div class="flex items-center">
+        @for(star of [].constructor(5); track $index){
+        <svg lucideStar class="h-5 w-5" [class.text-yellow-400]="$index < roundedRating()"
+          [class.fill-current]="$index < roundedRating()" />
+        }
+        <span class="ml-2 text-gray-600">({{product()?.rating}})</span>
+      </div>
+      <span class="text-gray-400">•</span>
+      <span class="text-gray-600">{{product()?.reviews}} reviews</span>
+    </div>
+    <p class="text-4xl font-bold text-amber-600 mb-6">
+      {{product()?.price?.toLocaleString()}}
+    </p>
+  </div>
+
+  @if(product()?.description){
+  <div>
+    <h3 class="text-lg font-semibold mb-2">Description</h3>
+    <p class="text-gray-700 leading-relaxed">{{product()?.description}}</p>
+  </div>
+  }
+
+  @if(product()?.features){
+  <div>
+    <h3 class="text-lg font-semibold mb-2">Features</h3>
+    <ul class="list-disc list-inside space-y-1 text-gray-700">
+      @for(feature of product()?.features; track $index){
+      <li>{{feature}}</li>
+      }
+    </ul>
+  </div>
+  }
+
+  <div class="flex space-x-4">
+    <button uiButton (click)="addToCart()" class="flex-1 bg-amber-600 hover:bg-amber-700 text-white py-3">
+      <svg lucideShoppingCart class="mr-2 h-5 w-5" />
+      Add to Cart
+    </button>
+    <button uiButton variant="outline" class="px-8 py-3">
+      Save for Later
+    </button>
+  </div>
+
+  <div class="bg-amber-50 rounded-lg p-4">
+    <h4 class="font-semibold text-amber-900 mb-2">Free Delivery</h4>
+    <p class="text-amber-800 text-sm">
+      Free delivery on orders over $500. Standard delivery takes 3-5 business days.
+    </p>
+  </div>
+</div>
