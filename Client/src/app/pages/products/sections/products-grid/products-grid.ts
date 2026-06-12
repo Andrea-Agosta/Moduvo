@@ -7,8 +7,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LucideHeart, LucideShoppingCart, LucideStar } from "@lucide/angular";
 
-import { ProductService } from '../../../../services/product.service';
-import { Product } from '../../../../services/product.model';
+import { ProductService } from '../../../../services/product/product.service';
+import { Product } from '../../../../services/product/product.model';
 import { Button } from "../../../../components/button/button";
 import { addProduct } from '../../../../store/cart/cart.actions';
 
@@ -27,9 +27,9 @@ interface SelectOption {
 export class ProductsGrid implements OnInit {
   private productService = inject(ProductService);
   private store = inject(Store<{ cart: Product[] }>);
-  products = signal<Product[]>([]);
-  isProductLoading = signal<boolean>(true);
-  error = signal<any>(null);
+  products = this.productService.products;
+  isProductLoading = this.productService.isLoading
+  error = this.productService.error
   selected = 'featured';
   sortOptions: SelectOption[] = [
     { value: 'featured', label: 'Featured' },
@@ -40,18 +40,7 @@ export class ProductsGrid implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe({
-      next: (data) => {
-        this.products.set(data);
-      },
-      error: (err) => {
-        this.error.set(err);
-        this.isProductLoading.set(false);
-      },
-      complete: () => {
-        this.isProductLoading.set(false);
-      }
-    });
+    this.productService.loadProducts();
   }
 
   addToCart(product: Product) {

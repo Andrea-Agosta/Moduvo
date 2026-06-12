@@ -1,6 +1,6 @@
 import { Component, input, computed } from '@angular/core';
 
-import { Product } from '../../services/product.model';
+import { Product } from '../../services/product/product.model';
 
 @Component({
   selector: 'app-card',

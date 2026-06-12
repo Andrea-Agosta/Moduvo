@@ -1,10 +1,9 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LucideStar } from '@lucide/angular';
 
 import { Button } from '../../../../components/button/button';
-import { ProductService } from '../../../../services/product.service';
-import { Product } from '../../../../services/product.model';
+import { ProductService } from '../../../../services/product/product.service';
 import { Card } from '../../../../components/card/card';
 
 @Component({
@@ -15,23 +14,12 @@ import { Card } from '../../../../components/card/card';
 })
 export class FeaturedProducts implements OnInit {
   private productService = inject(ProductService);
-  products = signal<Product[]>([]);
-  isProductLoading = signal<boolean>(true);
-  error = signal<any>(null);
+  products = this.productService.products;
+  isProductLoading = this.productService.isLoading
+  error = this.productService.error
   childName = "products"
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe({
-      next: (data) => {
-        this.products.set(data);
-      },
-      error: (err) => {
-        this.error.set(err);
-        this.isProductLoading.set(false);
-      },
-      complete: () => {
-        this.isProductLoading.set(false);
-      }
-    });
+    this.productService.loadProducts();
   }
 }

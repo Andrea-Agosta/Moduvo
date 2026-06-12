@@ -2,7 +2,7 @@ import { Component, computed, inject, input } from '@angular/core';
 import { LucideShoppingCart, LucideStar } from '@lucide/angular';
 import { Store } from '@ngrx/store';
 
-import { Product } from '../../../../services/product.model';
+import { Product } from '../../../../services/product/product.model';
 import { Badge } from '../../../../components/badge/badge';
 import { Button } from '../../../../components/button/button';
 import { addProduct } from '../../../../store/cart/cart.actions';
@@ -15,7 +15,7 @@ import { addProduct } from '../../../../store/cart/cart.actions';
 })
 export class ProductInfo {
   private store = inject(Store<{ cart: Product[] }>);
-  product = input<Product>();
+  product = input<Product | null>();
   protected roundedRating = computed(() => {
     const rating = this.product()?.rating;
     return rating ? Math.floor(rating) : 0;

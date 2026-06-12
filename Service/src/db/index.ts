@@ -4,18 +4,21 @@ export const getProducts = () => [
     name: "Modern Velvet Sofa",
     price: 1299,
     originalPrice: 1599,
+    discount:20,
     images: ["https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop"],
     features: [],
     category: "Living Room",
     rating: 4.8,
     reviews: 127,
     isNew: false,
-    isSale: true
+    isSale: true,
+    isFlashDeal: true,
   },
   {
     id: 2,
     name: "Scandinavian Dining Table",
     price: 899,
+    discount: 0,
     originalPrice: null,
     description: "A sleek and comfortable sofa for your modern living space.",
     images: ["https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&h=300&fit=crop"],
@@ -24,13 +27,15 @@ export const getProducts = () => [
     rating: 4.9,
     reviews: 89,
     isNew: true,
-    isSale: false
+    isSale: false,
+    isFlashDeal: false,
   },
   {
     id: 3,
     name: "Luxury Leather Armchair",
     price: 799,
     originalPrice: 999,
+    discount:20,
     description: "A sleek and comfortable Leather Armchair for your modern living space.",
     images: ["https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop"],
     features: [],
@@ -38,13 +43,15 @@ export const getProducts = () => [
     rating: 4.7,
     reviews: 203,
     isNew: false,
-    isSale: true
+    isSale: true,
+    isFlashDeal: false,
   },
   {
     id: 4,
     name: "Minimalist Bed Frame",
     price: 649,
     originalPrice: null,
+    discount:0,
     description: "A minimalist bed frame for your modern bedroom space.",
     images: ["https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&h=300&fit=crop"],
     features: [],
@@ -52,13 +59,15 @@ export const getProducts = () => [
     rating: 4.6,
     reviews: 156,
     isNew: false,
-    isSale: false
+    isSale: false,
+    isFlashDeal: false,
   },
   {
     id: 5,
     name: "Industrial Coffee Table",
     price: 399,
     originalPrice: null,
+    discount:0,
     description: "An industrial coffe table for your modern Living space.",
     images: ["https://images.unsplash.com/photo-1549497538-303791108f95?w=400&h=300&fit=crop"],
     features: [],
@@ -66,13 +75,15 @@ export const getProducts = () => [
     rating: 4.5,
     reviews: 78,
     isNew: true,
-    isSale: false
+    isSale: false,
+    isFlashDeal: false,
   },
   {
     id: 6,
     name: "Ergonomic Office Chair",
-    price: 559,
+    price: 399,
     originalPrice: 699,
+    discount: 43,
     description: "An ergonomic office chair for your modern office space.",
     images: ["https://images.unsplash.com/photo-1541558869434-2840d308329a?w=400&h=300&fit=crop"],
     features: [],
@@ -80,7 +91,8 @@ export const getProducts = () => [
     rating: 4.8,
     reviews: 234,
     isNew: false,
-    isSale: true
+    isSale: true,
+    isFlashDeal: true,
   },
   {
     id: 7,
@@ -88,6 +100,7 @@ export const getProducts = () => [
     category: "Living Room",
     price: 799.99,
     originalPrice: null,
+    discount:0,
     description: "A sleek and comfortable sofa for your modern living space.",
     images: [
       "https://images.unsplash.com/photo-1634497885778-152eb6fd543d?w=400&h=300&fit=crop",
@@ -101,7 +114,8 @@ export const getProducts = () => [
     rating: 4.5,
     reviews: 120,
     isNew: false,
-    isSale: false
+    isSale: false,
+    isFlashDeal: false,
   },
   {
     id: 8,
@@ -109,6 +123,7 @@ export const getProducts = () => [
     category: "Dining Room",
     price: 549.99,
     originalPrice: null,
+    discount:0,
     description: "A sophisticated dining table to elevate your dining experience.",
     images: [
       "https://plus.unsplash.com/premium_photo-1670950411934-e21abf39191e?w=400&h=300&fit=crop",
@@ -123,7 +138,8 @@ export const getProducts = () => [
     rating: 4.2,
     reviews: 95,
     isNew: false,
-    isSale: false
+    isSale: false,
+    isFlashDeal: false,
   },
   {
     id: 9,
@@ -131,6 +147,7 @@ export const getProducts = () => [
     category: "Bedroom",
     price: 899.99,
     originalPrice: null,
+    discount: 0,
     description: "A comfortable and stylish bed frame for a restful night's sleep.",
     images: [
       "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
@@ -145,7 +162,8 @@ export const getProducts = () => [
     rating: 4.8,
     reviews: 150,
     isNew: false,
-    isSale: false
+    isSale: false,
+    isFlashDeal: false,
   },
 ];
 
@@ -171,3 +189,10 @@ export const getHomeCategories = () => [
     count: "120+ items"
   }
 ];
+
+export const getProductDealsDurationFromDB = () => {
+  const today = new Date()
+  today.setDate(today.getDate() + 2)
+  today.setUTCHours(0, 0, 0, 0);
+  return today.toISOString()
+}

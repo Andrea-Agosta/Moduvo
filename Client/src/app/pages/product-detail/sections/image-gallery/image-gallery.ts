@@ -1,6 +1,6 @@
 import { Component, input, signal } from '@angular/core';
 
-import { Product } from '../../../../services/product.model';
+import { Product } from '../../../../services/product/product.model';
 
 @Component({
   selector: 'app-image-gallery',
@@ -9,7 +9,7 @@ import { Product } from '../../../../services/product.model';
   styleUrl: './image-gallery.scss',
 })
 export class ImageGallery {
-  product = input<Product>();
+  product = input<Product | null>();
   selectedImage = signal<number>(0);
 
   onSelectedImage(index: number){
