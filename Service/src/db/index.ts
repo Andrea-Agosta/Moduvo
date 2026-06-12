@@ -171,3 +171,10 @@ export const getHomeCategories = () => [
     count: "120+ items"
   }
 ];
+
+export const getProductDealsDurationFromDB = () => {
+  const today = new Date()
+  today.setDate(today.getDate() + 2)
+  today.setUTCHours(0, 0, 0, 0);
+  return today.toISOString()
+}
