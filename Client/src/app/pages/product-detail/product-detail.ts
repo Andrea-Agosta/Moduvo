@@ -1,9 +1,8 @@
-import { Component, inject, input, OnInit, signal } from '@angular/core';
+import { Component, inject, input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ImageGallery } from "./sections/image-gallery/image-gallery";
-import { Product } from '../../services/product.model';
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../services/product/product.service';
 import { LucideArrowLeft } from '@lucide/angular';
 import { ProductInfo } from "./sections/product-info/product-info";
 
@@ -15,24 +14,13 @@ import { ProductInfo } from "./sections/product-info/product-info";
 })
 export class ProductDetail implements OnInit {
   private productService = inject(ProductService);
-  product = signal<Product | undefined>(undefined);
-  isProductLoading = signal<boolean>(true);
-  error = signal<any>(null);
+  product = this.productService.currentProduct;
+  isProductLoading = this.productService.isLoading
+  error = this.productService.error
   childName = "products"
   id = input.required<string>();
 
   ngOnInit(): void {
-    this.productService.getProductById(this.id()).subscribe({
-      next: (data) => {
-        this.product.set(data);
-      },
-      error: (err) => {
-        this.error.set(err);
-        this.isProductLoading.set(false);
-      },
-      complete: () => {
-        this.isProductLoading.set(false);
-      }
-    });
+    this.productService.loadProductById(this.id());
   }
 }

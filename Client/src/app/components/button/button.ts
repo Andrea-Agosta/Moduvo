@@ -1,4 +1,4 @@
-import { Component, computed, HostBinding, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../cn';
 
