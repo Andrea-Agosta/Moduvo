@@ -1,14 +1,16 @@
 export interface IProducts {
-	id: number,
-	name: string,
-	price: number,
-	originalPrice: number,
+	id: number
+	name: string
+	price: number
+	originalPrice: number
+	discount: number
 	description?: string
-	images: string[],
-	features: string[],
+	images: string[]
+	features: string[]
 	category: string
-	rating: number,
+	rating: number
 	reviews: number
 	isNew: boolean
 	isSale: boolean
+	isFlashDeal: boolean
 }
