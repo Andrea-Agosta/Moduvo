@@ -1,6 +1,6 @@
 export interface Category {
     name: string;
-    image: string;
+    images: string[];
     count: string;
   }
 

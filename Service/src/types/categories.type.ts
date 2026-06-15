@@ -1,5 +1,5 @@
 export interface ICategories {
     name: string,
-    image: string,
+    images: string[],
     count: string
 }

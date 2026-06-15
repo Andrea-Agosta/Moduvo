@@ -170,22 +170,22 @@ export const getProducts = () => [
 export const getHomeCategories = () => [
   {
     name: "Living Room",
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300&h=200&fit=crop",
+    images: ["https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300&h=200&fit=crop"],
     count: "200+ items"
   },
   {
     name: "Bedroom",
-    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=300&h=200&fit=crop",
+    images: ["https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=300&h=200&fit=crop"],
     count: "150+ items"
   },
   {
     name: "Dining Room",
-    image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=300&h=200&fit=crop",
+    images: ["https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=300&h=200&fit=crop"],
     count: "80+ items"
   },
   {
     name: "Office",
-    image: "https://images.unsplash.com/photo-1541558869434-2840d308329a?w=300&h=200&fit=crop",
+    images: ["https://images.unsplash.com/photo-1541558869434-2840d308329a?w=300&h=200&fit=crop"],
     count: "120+ items"
   }
 ];
