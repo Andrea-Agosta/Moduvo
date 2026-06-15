@@ -10,7 +10,7 @@ import { Badge } from '../../components/badge/badge';
 import { Button } from '../../components/button/button';
 import { Product } from '../../services/product/product.model';
 import { addProduct } from '../../store/cart/cart.actions';
-import { Card } from "../../components/card/card";
+import { Card } from '../../components/card/card';
 
 interface TimeLeft {
   hours: number
@@ -20,7 +20,7 @@ interface TimeLeft {
 
 @Component({
   selector: 'app-deals',
-  imports: [NewsletterSignup, Banner, LucideClock, Badge, RouterLink, LucideStar, Button, LucideShoppingCart, Card],
+  imports: [NewsletterSignup, Banner, LucideClock, Badge, Button, LucideShoppingCart, Card],
   templateUrl: './deals.html',
   styleUrl: './deals.scss',
 })
@@ -33,6 +33,7 @@ export class Deals implements OnInit {
   isProductDealsLoading = this.productService.isLoading;
   error = this.productService.error;
   dealsDuration = this.productService.productDealsDuration
+  hasDeals = computed(() => !this.error() && (this.productDeals() || this.dealsDuration()));
 
   bannerTitle = "⚡ Flash Sale!"
   bannerDescription = "Limited time offers - Up to 50% off selected items"

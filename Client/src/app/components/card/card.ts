@@ -1,24 +1,19 @@
-import { Component, input, computed } from '@angular/core';
-
-import { Product } from '../../services/product/product.model';
+import { Component, input, computed, booleanAttribute } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { LucideStar } from '@lucide/angular';
 
 @Component({
   selector: 'app-card',
-  imports: [],
+  imports: [RouterLink, LucideStar],
   templateUrl: './card.html',
   styleUrl: './card.scss',
 })
 export class Card {
-  data= input<Product>()
-  childName = input<String>();
-
-  style = {
-    category: 'h-48 group-hover:scale-110',
-    products:'h-64 group-hover:scale-105'
-  }
-
-  imageStyle = computed(() => {
-    const key = this.childName();
-    return this.style[key as keyof typeof this.style] || '';
-  });
+  imgUrl = input<string | undefined>();
+  overline = input<string | undefined>();
+  title = input<string | undefined>();
+  description = input<string | undefined>();
+  linkUrl =  input<string | undefined>();
+  rating = input<number | undefined>();
+  reviews = input<number | undefined>();
 }

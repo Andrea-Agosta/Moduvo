@@ -8,7 +8,7 @@
         } @else {
           @for (category of categories(); track category.name) {
             <article class="rounded-lg border bg-card p-4 shadow-sm">
-              <img [src]="category.image" [alt]="category.name" class="mb-3 h-40 w-full rounded-md object-cover" />
+              <img [src]="category.images[0]" [alt]="category.name" class="mb-3 h-40 w-full rounded-md object-cover" />
               <h3 class="font-semibold">{{ category.name }}</h3>
               <p class="text-muted-foreground">{{ category.count }}</p>
             </article>
