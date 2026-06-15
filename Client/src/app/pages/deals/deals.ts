@@ -10,6 +10,7 @@ import { Badge } from '../../components/badge/badge';
 import { Button } from '../../components/button/button';
 import { Product } from '../../services/product/product.model';
 import { addProduct } from '../../store/cart/cart.actions';
+import { Card } from '../../components/card/card';
 
 interface TimeLeft {
   hours: number
@@ -19,7 +20,7 @@ interface TimeLeft {
 
 @Component({
   selector: 'app-deals',
-  imports: [NewsletterSignup, Banner, LucideClock, Badge, RouterLink, LucideStar, Button, LucideShoppingCart],
+  imports: [NewsletterSignup, Banner, LucideClock, Badge, Button, LucideShoppingCart, Card],
   templateUrl: './deals.html',
   styleUrl: './deals.scss',
 })
