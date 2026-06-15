@@ -1,7 +1,10 @@
 <div class="min-h-screen bg-gray-50">
   <div class="max-w-7xl mx-auto px-4 py-8">
-
+    @if(isProductDealsLoading()){
+    <p class="text-xl text-gray-900 mb-4"> Loading ... </p>
+    } @else {
     <!-- Deal Banner -->
+    @if(hasDeals()){
     <app-banner [title]="bannerTitle" [description]="bannerDescription">
       <p class="text-red-100 mb-1">Ends in:</p>
       <div class="flex items-center space-x-2">
@@ -11,68 +14,72 @@
         </span>
       </div>
     </app-banner>
+    }
 
     <div class="text-center mb-8">
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">Amazing Deals</h1>
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">
+        @if (hasDeals()) { Amazing Deals }
+        @else { No Deals Available }
+      </h1>
       <p class="text-xl text-gray-600">Don't miss out on these incredible furniture discounts</p>
     </div>
 
+    @if (hasDeals()){
     <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       @for (productDeal of productDeals(); track productDeal.id){
-        <div class="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
-          <div class="relative overflow-hidden">
-            <img
-              [src]="productDeal.images[0]"
-              [alt]="productDeal.name"
-              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-            <div class="absolute top-3 left-3 flex flex-col space-y-2">
-              <ui-badge class="bg-red-600 text-white text">
-                -{{productDeal.discount}}%
-              </ui-badge>
-              @if(productDeal.isFlashDeal){
-                <ui-badge class="bg-yellow-500 text-black">
-                  ⚡ Flash Deal
-                </ui-badge>
-              }
-            </div>
-          </div>
-
-          <div class="p-4">
-            <p class="text-sm text-gray-500 mb-1">{{productDeal.category}}</p>
-            <h3 class="font-semibold mb-2 group-hover:text-amber-600 transition-colors">
-              <a [routerLink]="`/products/${productDeal.id}`">{{productDeal.name}}</a>
-            </h3>
-
-            <div class="flex items-center space-x-2 mb-3">
-              <div class="flex items-center">
-                <svg lucideStar class="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                <span class="text-sm text-gray-600 ml-1">
-                  {{productDeal.rating}} ({{productDeal.reviews}})
-                </span>
-              </div>
-            </div>
-
-            <div class="flex items-center justify-between mb-4">
-              <div>
-                <div class="flex items-center space-x-2">
-                  <span class="text-lg font-bold text-red-600">${{productDeal.price}}</span>
-                  <span class="text-gray-500 line-through text-sm">${{productDeal.originalPrice}}</span>
-                </div>
-                <p class="text-green-600 text-sm font-medium">
-                  Save ${{productDeal.originalPrice - productDeal.price}}
-                </p>
-              </div>
-            </div>
-
-            <button uiButton class="w-full bg-amber-600 hover:bg-amber-700 text-white" (click)="addToCart(productDeal)">
-              <svg lucideShoppingCart class="w-4 h-4 mr-2" />
-              Add to Cart
-            </button>
+      <div class="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+        <div class="relative overflow-hidden">
+          <img [src]="productDeal.images[0]" [alt]="productDeal.name"
+            class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
+          <div class="absolute top-3 left-3 flex flex-col space-y-2">
+            <ui-badge class="bg-red-600 text-white text">
+              -{{productDeal.discount}}%
+            </ui-badge>
+            @if(productDeal.isFlashDeal){
+            <ui-badge class="bg-yellow-500 text-black">
+              ⚡ Flash Deal
+            </ui-badge>
+            }
           </div>
         </div>
+
+        <div class="p-4">
+          <p class="text-sm text-gray-500 mb-1">{{productDeal.category}}</p>
+          <h3 class="font-semibold mb-2 group-hover:text-amber-600 transition-colors">
+            <a [routerLink]="`/products/${productDeal.id}`">{{productDeal.name}}</a>
+          </h3>
+
+          <div class="flex items-center space-x-2 mb-3">
+            <div class="flex items-center">
+              <svg lucideStar class="w-4 h-4 fill-yellow-400 text-yellow-400" />
+              <span class="text-sm text-gray-600 ml-1">
+                {{productDeal.rating}} ({{productDeal.reviews}})
+              </span>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="text-lg font-bold text-red-600">${{productDeal.price}}</span>
+                <span class="text-gray-500 line-through text-sm">${{productDeal.originalPrice}}</span>
+              </div>
+              <p class="text-green-600 text-sm font-medium">
+                Save ${{productDeal.originalPrice - productDeal.price}}
+              </p>
+            </div>
+          </div>
+
+          <button uiButton class="w-full bg-amber-600 hover:bg-amber-700 text-white" (click)="addToCart(productDeal)">
+            <svg lucideShoppingCart class="w-4 h-4 mr-2" />
+            Add to Cart
+          </button>
+        </div>
+      </div>
       }
     </div>
+    }
     <app-newsletter-signup></app-newsletter-signup>
+  }
   </div>
 </div>
