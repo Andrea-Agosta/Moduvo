@@ -8,7 +8,7 @@ import { Card } from '../../../../components/card/card';
 
 @Component({
   selector: 'app-featured-products',
-  imports: [Button, RouterLink, Card, LucideStar],
+  imports: [Button, RouterLink, Card],
   templateUrl: './featured-products.html',
   styleUrl: './featured-products.scss',
 })
