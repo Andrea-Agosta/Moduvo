@@ -1,4 +1,20 @@
-<app-hero-section></app-hero-section>
+<app-hero-section 
+  [title]="title"
+  [secondLineTitle]="secondLineTitle"
+  [description]="description"
+  [imgUrl]="imgUrl"
+  [imgAlt]="imgAlt"
+>
+  <div class="flex space-x-4">
+    <a uiButton [size]="'lg'" [routerLink]="['/products']">
+        Shop Now
+    </a>
+    <!-- TODO: add functionality to this button -->
+    <button uiButton [variant]="'outline'" [size]="'lg'">
+        View Collections
+    </button>
+  </div>
+</app-hero-section>
 <app-trust-indicator></app-trust-indicator>
 <app-categories></app-categories>
 <app-featured-products></app-featured-products>

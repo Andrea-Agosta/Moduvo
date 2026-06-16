@@ -1,0 +1,10 @@
+<section class="bg-white py-16">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">{{storyData.title}}</h2>
+    <div class="space-y-6 text-lg text-gray-600">
+      @for(paragraph of storyData.paragraphs; track $index){
+        <p>{{paragraph}}</p>
+      }
+    </div>
+  </div>
+</section>

@@ -3,11 +3,11 @@ import { RouterLink } from '@angular/router';
 import { LucideShoppingCart, LucideLogOut, LucideUser } from '@lucide/angular';
 import { Store } from '@ngrx/store';
 
-import { selectCartItemsCount } from '../../store/cart/cart.selectors';
-import { AuthActions } from '../../store/auth/auth.actions';
-import { selectUser } from '../../store/auth/auth.selectors';
-import { AuthState } from '../../store/auth/auth.reducer';
-import { CartState } from '../../store/cart/cart.reducer';
+import { selectCartItemsCount } from '../../../store/cart/cart.selectors';
+import { AuthActions } from '../../../store/auth/auth.actions';
+import { selectUser } from '../../../store/auth/auth.selectors';
+import { AuthState } from '../../../store/auth/auth.reducer';
+import { CartState } from '../../../store/cart/cart.reducer';
 import { Button } from "../button/button";
 
 interface AppState {

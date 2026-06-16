@@ -1,0 +1,23 @@
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
+      <p class="text-xl text-gray-600">The passionate people behind FurniStore</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      @for(member of team; track member.name) {
+        <div class="text-center bg-white p-6 rounded-lg shadow-md">
+          <img
+            [src]="member.image"
+            [alt]="member.name"
+            class="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+          />
+          <h3 class="text-xl font-semibold text-gray-900 mb-1">{{member.name}}</h3>
+          <p class="text-amber-600 font-medium mb-3">{{member.role}}</p>
+          <p class="text-gray-600">{{member.description}}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

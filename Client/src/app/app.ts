@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { Navbar } from './components/navbar/navbar';
+import { Navbar } from './components/ui/navbar/navbar';
 
 @Component({
   selector: 'app-root',
