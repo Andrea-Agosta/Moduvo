@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Button } from '../../../../components/button/button';
+import { Button } from '../../../../components/ui/button/button';
 
 @Component({
   selector: 'app-newsletter-signup',

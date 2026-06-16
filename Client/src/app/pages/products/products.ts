@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { FilterSidebar } from "./sections/filter-sidebar/filter-sidebar";
 import { ProductsGrid } from "./sections/products-grid/products-grid";
-import { Pagination } from '../../components/pagination/pagination';
+import { Pagination } from '../../components/ui/pagination/pagination';
 
 @Component({
   selector: 'app-products',

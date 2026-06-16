@@ -4,9 +4,9 @@ import { LucideFunnel, LucideStar } from "@lucide/angular";
 
 import { CategoryService } from '../../../../services/category.service';
 import { Category } from '../../../../services/category.model';
-import { Checkbox } from '../../../../components/checkbox/checkbox';
-import { Slider } from '../../../../components/slider/slider';
-import { Button } from '../../../../components/button/button';
+import { Checkbox } from '../../../../components/ui/checkbox/checkbox';
+import { Slider } from '../../../../components/ui/slider/slider';
+import { Button } from '../../../../components/ui/button/button';
 
 @Component({
   selector: 'app-filter-sidebar',

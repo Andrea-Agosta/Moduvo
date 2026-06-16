@@ -2,9 +2,9 @@ import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LucideStar } from '@lucide/angular';
 
-import { Button } from '../../../../components/button/button';
+import { Button } from '../../../../components/ui/button/button';
 import { ProductService } from '../../../../services/product/product.service';
-import { Card } from '../../../../components/card/card';
+import { Card } from '../../../../components/ui/card/card';
 
 @Component({
   selector: 'app-featured-products',

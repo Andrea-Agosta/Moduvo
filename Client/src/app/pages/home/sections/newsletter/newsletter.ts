@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { Button } from '../../../../components/button/button';
-import { InputComponent } from '../../../../components/inputComponent/inputComponent';
+import { Button } from '../../../../components/ui/button/button';
+import { InputComponent } from '../../../../components/ui/inputComponent/inputComponent';
 
 @Component({
   selector: 'app-newsletter',

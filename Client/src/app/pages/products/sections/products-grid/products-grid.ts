@@ -8,9 +8,9 @@ import { LucideHeart, LucideShoppingCart } from "@lucide/angular";
 
 import { ProductService } from '../../../../services/product/product.service';
 import { Product } from '../../../../services/product/product.model';
-import { Button } from "../../../../components/button/button";
+import { Button } from "../../../../components/ui/button/button";
 import { addProduct } from '../../../../store/cart/cart.actions';
-import { Card } from "../../../../components/card/card";
+import { Card } from "../../../../components/ui/card/card";
 
 interface SelectOption {
   value: string;

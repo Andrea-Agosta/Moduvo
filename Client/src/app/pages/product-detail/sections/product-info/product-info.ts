@@ -3,8 +3,8 @@ import { LucideShoppingCart, LucideStar } from '@lucide/angular';
 import { Store } from '@ngrx/store';
 
 import { Product } from '../../../../services/product/product.model';
-import { Badge } from '../../../../components/badge/badge';
-import { Button } from '../../../../components/button/button';
+import { Badge } from '../../../../components/ui/badge/badge';
+import { Button } from '../../../../components/ui/button/button';
 import { addProduct } from '../../../../store/cart/cart.actions';
 
 @Component({

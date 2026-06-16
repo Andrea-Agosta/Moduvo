@@ -4,13 +4,13 @@ import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { NewsletterSignup } from "./sections/newsletter-signup/newsletter-signup";
-import { Banner } from "../../components/banner/banner";
+import { Banner } from "../../components/ui/banner/banner";
 import { ProductService } from '../../services/product/product.service';
-import { Badge } from '../../components/badge/badge';
-import { Button } from '../../components/button/button';
+import { Badge } from '../../components/ui/badge/badge';
+import { Button } from '../../components/ui/button/button';
 import { Product } from '../../services/product/product.model';
 import { addProduct } from '../../store/cart/cart.actions';
-import { Card } from '../../components/card/card';
+import { Card } from '../../components/ui/card/card';
 
 interface TimeLeft {
   hours: number

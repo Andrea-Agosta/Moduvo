@@ -1,6 +1,6 @@
 <!-- Sort and Results Info -->
 <!-- TODO: future implementation: render page using the filters options -->
-<div class="flex justify-between items-center mb-6">
+<section class="flex justify-between items-center mb-6">
 	<p class="text-muted-foreground">Showing {{products().length}} products</p>
 	<div class="w-48">
 		<mat-select [(value)]="selected"
@@ -13,10 +13,10 @@
 			}
 		</mat-select>
 	</div>
-</div>
+</section>
 
 <!-- Products Grid -->
-<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+<section class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
 	@for (product of products(); track product.id){
 	<app-card [imgUrl]="product.images[0]" [overline]="product.category" [title]="product.name"
 		[linkUrl]="`/products/${product.id}`" [rating]="product.rating" [reviews]="product.reviews">
@@ -57,4 +57,4 @@
 		</div>
 	</app-card>
 	}
-</div>
+</section>
