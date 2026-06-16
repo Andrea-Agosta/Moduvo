@@ -1,6 +1,8 @@
 export interface Category {
-    name: string;
-    images: string[];
-    count: string;
-  }
+  id: number
+  name: string,
+  description: string,
+  image: string,
+  productCount: number
+}
 

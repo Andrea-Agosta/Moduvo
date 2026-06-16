@@ -167,26 +167,48 @@ export const getProducts = () => [
   },
 ];
 
-export const getHomeCategories = () => [
+export const getCategories = () => [
   {
+    id: 1,
     name: "Living Room",
-    images: ["https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300&h=200&fit=crop"],
-    count: "200+ items"
+    description: "Comfortable sofas, chairs, and coffee tables",
+    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop",
+    productCount: 156
   },
   {
+    id: 2,
     name: "Bedroom",
-    images: ["https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=300&h=200&fit=crop"],
-    count: "150+ items"
+    description: "Beds, nightstands, and wardrobes",
+    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&h=400&fit=crop",
+    productCount: 89
   },
   {
+    id: 3,
     name: "Dining Room",
-    images: ["https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=300&h=200&fit=crop"],
-    count: "80+ items"
+    description: "Dining tables, chairs, and storage",
+    image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600&h=400&fit=crop",
+    productCount: 67
   },
   {
+    id: 4,
     name: "Office",
-    images: ["https://images.unsplash.com/photo-1541558869434-2840d308329a?w=300&h=200&fit=crop"],
-    count: "120+ items"
+    description: "Desks, chairs, and storage solutions",
+    image: "https://images.unsplash.com/photo-1541558869434-2840d308329a?w=600&h=400&fit=crop",
+    productCount: 45
+  },
+  {
+    id: 5,
+    name: "Storage",
+    description: "Shelves, cabinets, and organizers",
+    image: "https://images.unsplash.com/photo-1549497538-303791108f95?w=600&h=400&fit=crop",
+    productCount: 78
+  },
+  {
+    id: 6,
+    name: "Outdoor",
+    description: "Patio furniture and garden accessories",
+    image: "https://images.unsplash.com/photo-1519947486511-46149fa0a254?w=600&h=400&fit=crop",
+    productCount: 34
   }
 ];
 

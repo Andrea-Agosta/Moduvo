@@ -1,5 +1,7 @@
 export interface ICategories {
+    id: number
     name: string,
-    images: string[],
-    count: string
+    description: string,
+    image: string,
+    productCount: number
 }
