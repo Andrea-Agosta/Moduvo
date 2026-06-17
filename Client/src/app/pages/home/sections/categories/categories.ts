@@ -1,7 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 
-import { CategoryService } from '../../../../services/category.service';
-import { Category } from '../../../../services/category.model';
+import { CategoryService } from '../../../../services/category/category.service';
 
 @Component({
   selector: 'app-categories',
@@ -12,22 +11,11 @@ import { Category } from '../../../../services/category.model';
 export class Categories implements OnInit {
   private categoryService = inject(CategoryService);
 
-  categories = signal<Category[]>([]);
-  isCategoryLoading = signal<boolean>(true);
-  error = signal<any>(null);
+  categories = this.categoryService.categories
+  isCategoryLoading = this.categoryService.isLoading
+  error = this.categoryService.error
   
   ngOnInit(): void {
-    this.categoryService.getCategories().subscribe({
-      next: (data) => {
-        this.categories.set(data);
-      },
-      error: (err) => {
-        this.error.set(err);
-        this.isCategoryLoading.set(false);
-      },
-      complete: () => {
-        this.isCategoryLoading.set(false);
-      }
-    });
+    this.categoryService.categories()
   }
 }

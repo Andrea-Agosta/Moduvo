@@ -1,9 +1,8 @@
-import { Component, inject, OnInit, signal, Input } from '@angular/core';
+import { Component, inject, OnInit, signal, input } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 import { LucideFunnel, LucideStar } from "@lucide/angular";
 
-import { CategoryService } from '../../../../services/category.service';
-import { Category } from '../../../../services/category.model';
+import { CategoryService } from '../../../../services/category/category.service';
 import { Checkbox } from '../../../../components/ui/checkbox/checkbox';
 import { Slider } from '../../../../components/ui/slider/slider';
 import { Button } from '../../../../components/ui/button/button';
@@ -15,12 +14,12 @@ import { Button } from '../../../../components/ui/button/button';
   styleUrl: './filter-sidebar.scss',
 })
 export class FilterSidebar implements OnInit {
-  @Input() rating: number = 0;
+  rating = input<number>(0);
   private categoryService = inject(CategoryService);
   selectedCategories = signal<string[]>([]);
-  categories = signal<Category[]>([]);
-  isCategoryLoading = signal<boolean>(true);
-  error = signal<any>(null);
+  categories = this.categoryService.categories
+  isCategoryLoading = this.categoryService.isLoading
+  error = this.categoryService.error
   currentPrice = signal<number>(0);
   priceRange = signal<[number, number]>([0, 2000]);
 
@@ -38,17 +37,10 @@ export class FilterSidebar implements OnInit {
   }
   
   ngOnInit(): void {
-    this.categoryService.getCategories().subscribe({
-      next: (data) => {
-        this.categories.set(data);
-      },
-      error: (err) => {
-        this.error.set(err);
-        this.isCategoryLoading.set(false);
-      },
-      complete: () => {
-        this.isCategoryLoading.set(false);
-      }
-    });
+    this.categoryService.loadCategories()
   }
+}
+
+function loadCategories() {
+  throw new Error('Function not implemented.');
 }
